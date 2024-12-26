@@ -5,7 +5,7 @@ return {
   opts = {
     default_map = true, -- Default mapping <F1> in normal mode.
     auto_update = true, -- Update header when saving.
-    user = "username", -- Your user.
+    user = "user", -- Your user.
     mail = "mail", -- Your mail.
     -- add other options.
   },
