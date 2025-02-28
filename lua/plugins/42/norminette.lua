@@ -4,7 +4,7 @@ return {
 	local norminette = require("norminette")
 	norminette.setup({
 			runOnSave = true,
-			maxErrorsToShow = 5,
+			maxErrorsToShow = 32,
 			active = false,
 	})
 	end,
