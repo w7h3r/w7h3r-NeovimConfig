@@ -23,5 +23,5 @@ require("lazy").setup({
     { import = "plugins.42" },
   },
   install = { colorscheme = { "auto" } },
-  checker = { enabled = true },
+  checker = { enabled = true, notify = false }, -- Update enabled, update pop-up disabled. However plugins will be updated.
 })
