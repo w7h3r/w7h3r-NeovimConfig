@@ -4,40 +4,41 @@ return {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'hrsh7th/cmp-nvim-lsp',
-    'ray-x/lsp_signature.nvim',  -- Add lsp_signature.nvim for function signatures
+    'ray-x/lsp_signature.nvim',
   },
   config = function()
-    -- Initialize mason for LSP management
+    -- Setup mason
     require('mason').setup()
 
-    local mason_lspconfig = require('mason-lspconfig')
-    mason_lspconfig.setup({
+    -- Setup mason-lspconfig
+    require('mason-lspconfig').setup({
       ensure_installed = {
-        "clangd",  -- For C/C++
+        'clangd',
       },
     })
 
-    -- LSP configuration
+    -- Load lspconfig
     local lspconfig = require('lspconfig')
 
-    -- clangd setup for C/C++
+    -- Common on_attach function
+    local on_attach = function(client, bufnr)
+      -- Enable lsp_signature
+      require('lsp_signature').on_attach({
+        bind = true,
+        hint_enable = true,
+        floating_window = true,
+        handler_opts = {
+          border = 'rounded'
+        }
+      }, bufnr)
+    end
+
+    -- Setup clangd
     lspconfig.clangd.setup({
-      on_attach = function(client, bufnr)
-        -- Enable signature help via lsp_signature.nvim
-        require('lsp_signature').on_attach({
-          bind = true,
-          hint_enable = true,
-          floating_window = true,
-          handler_opts = {
-            border = 'rounded'
-          }
-        })
-      end,
+      on_attach = on_attach,
       flags = {
         debounce_text_changes = 150,
       }
     })
-
   end
 }
-
