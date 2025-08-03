@@ -8,7 +8,7 @@ vim.g.copilot_no_tab_map = 1
 
 vim.diagnostic.config({
   virtual_text = {
-    prefix = '●',  -- veya '>>', '→' gibi bir şey de olabilir
+    prefix = '●',
     source = true,
   },
   float = {
