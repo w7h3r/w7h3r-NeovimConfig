@@ -4,21 +4,17 @@ return {
     config = function()
       vim.opt.termguicolors = true
       require("kanagawa").setup({
-        -- opsiyonel ayarlar, örnek:
-        compile = true,        -- tema önbelleğe alınsın
+        compile = true,
         undercurl = true,
         commentStyle = { italic = true },
         keywordStyle = { italic = false },
         statementStyle = { bold = true },
-        transparent = false,   -- transparan arka plan için true yapabilirsin
+        transparent = false,
         colors = {
-          -- buraya renk override ekleyebilirsin
         },
         overrides = function(colors)
           return {
-            -- highlight override örneği
             Normal = { bg = colors.bg },
-            -- diğerleri...
           }
         end,
       })
