@@ -24,11 +24,18 @@ return {
         }
       }, bufnr)
     end
-    lspconfig.clangd.setup({
-      on_attach = on_attach,
-      flags = {
-        debounce_text_changes = 150,
-      }
-    })
+	vim.api.nvim_create_autocmd('FileType', {
+		pattern = 'c, cpp',
+		callback = function()
+			vim.lsp_start({
+				name = 'clangd',
+				cmd { 'clangd'},
+				on_attach = on_attach,
+				flags = {
+					debounce_text_changes = 150
+				}
+			})
+		end,
+	})
   end
 }
