@@ -12,7 +12,6 @@ return {
   },
   config = function()
     local cmp = require('cmp')
-    
     cmp.setup({
       snippet = {
         expand = function(args)
@@ -35,8 +34,6 @@ return {
         { name = 'calc' },
       }),
     })
-
-    -- Setup for command line
     cmp.setup.cmdline(':', {
       mapping = cmp.mapping.preset.cmdline(),
       sources = {
@@ -44,7 +41,6 @@ return {
         { name = 'cmdline' }
       }
     })
-
     cmp.setup.cmdline('/', {
       mapping = cmp.mapping.preset.cmdline(),
       sources = {
@@ -53,4 +49,3 @@ return {
     })
   end
 }
-
