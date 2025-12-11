@@ -47,13 +47,17 @@ return {
         local bufnr = args.buf
         if clangd_running(bufnr) then return end
         local path = vim.api.nvim_buf_get_name(bufnr)
-        local root_dir
-        if util then
-          root_dir = util.root_pattern('compile_commands.json', 'compile_flags.txt', '.git')(path) or util.path.cwd()
-        else
-          root_dir = vim.loop.cwd()
-        end
-        local cfg = {
+		local root_dir
+if util then
+  root_dir = util.root_pattern(
+    'compile_commands.json',
+    'compile_flags.txt',
+    '.git'
+  )(path) or vim.loop.cwd()
+else
+  root_dir = vim.loop.cwd()
+end
+                local cfg = {
           name = 'clangd',
           cmd = { 'clangd' },
           root_dir = root_dir,
