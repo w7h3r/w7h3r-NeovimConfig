@@ -32,7 +32,7 @@ return {
     end
 
     local function clangd_running(bufnr)
-      local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
+      local clients = vim.lsp.get_clients({ bufnr = bufnr })
       for _, c in ipairs(clients) do
         if c.name == 'clangd' then
           return true
