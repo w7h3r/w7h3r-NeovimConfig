@@ -74,7 +74,7 @@ return {
           flags = { debounce_text_changes = 150 },
         }
 
-        local client_id = vim.lsp.start_client(cfg)
+        local client_id = vim.lsp.start(cfg)
         if client_id then
           vim.lsp.buf_attach_client(bufnr, client_id)
           local client = vim.lsp.get_client_by_id(client_id)
