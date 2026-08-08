@@ -4,161 +4,224 @@ if vim.fn.exists("syntax_on") then
   vim.cmd("syntax reset")
 end
 
-vim.g.colors_name = "betterSimple"
+vim.g.colors_name = "simpleBlack"
 
-local colorPalette = {
-  bg = "#000000",
-  bg2 = "#000000",
-  bg3 = "#000000",
 
-  fg = "#d8dee9",
-  fg_dark = "#eceff4",
+local colors = {
+  bg = "#0d0d0d",
+  bg2 = "#161616",
 
-  comment = "#616e88",
-  string = "#a3be8c",
-  function_name = "#88c0d0",
-  keyword = "#b48ead",
-  type = "#ebcb8b",
+  fg = "#d6d6d6",
+  gray = "#666666",
 
-  line = "#4c566a",
+  keyword = "#c586c0",
+  function_name = "#61afef",
+  string = "#98c379",
+  number = "#d19a66",
+  type = "#e5c07b",
 
-  error = "#af214a",
-  warning = "#99632A",
+  red = "#e06c75",
+  cyan = "#56b6c2",
 }
 
+
 local highlights = {
+
   Normal = {
-    fg = colorPalette.fg,
-    bg = colorPalette.bg,
-  },
-
-  Comment = {
-    fg = colorPalette.comment,
-    italic = true,
-  },
-
-  String = {
-    fg = colorPalette.string,
-  },
-
-  Function = {
-    fg = colorPalette.function_name,
-  },
-
-  Keyword = {
-    fg = colorPalette.keyword,
-  },
-
-  Type = {
-    fg = colorPalette.type,
-  },
-
-  LineNr = {
-    fg = colorPalette.line,
-  },
-
-  CursorLine = {
-    bg = colorPalette.bg3,
-  },
-
-  StatusLine = {
-    fg = "#000000",
-    bg = "#000000",
+    fg = colors.fg,
+    bg = colors.bg,
   },
 
   NormalFloat = {
-    fg = colorPalette.fg,
-    bg = colorPalette.bg2,
+    fg = colors.fg,
+    bg = colors.bg2,
   },
 
-  FloatBorder = {
-    fg = colorPalette.function_name,
-    bg = "NONE",
+
+  Comment = {
+    fg = colors.gray,
+    italic = true,
   },
+
+
+  String = {
+    fg = colors.string,
+  },
+
+
+  Character = {
+    fg = colors.string,
+  },
+
+
+  Number = {
+    fg = colors.number,
+  },
+
+
+  Boolean = {
+    fg = colors.number,
+  },
+
+
+  Function = {
+    fg = colors.function_name,
+  },
+
+
+  Identifier = {
+    fg = colors.fg,
+  },
+
+
+  Keyword = {
+    fg = colors.keyword,
+  },
+
+
+  Conditional = {
+    fg = colors.keyword,
+  },
+
+
+  Repeat = {
+    fg = colors.keyword,
+  },
+
+
+  Type = {
+    fg = colors.type,
+  },
+
+
+  Structure = {
+    fg = colors.type,
+  },
+
+
+  LineNr = {
+    fg = "#444444",
+  },
+
 
   CursorLineNr = {
-    fg = colorPalette.type,
+    fg = colors.fg,
     bold = true,
   },
 
-  Number = {
-    fg = colorPalette.type,
+
+  CursorLine = {
+    bg = "#151515",
   },
 
-  Boolean = {
-    fg = colorPalette.type,
+
+  StatusLine = {
+    fg = colors.fg,
+    bg = colors.bg2,
   },
 
-  Identifier = {
-    fg = colorPalette.fg,
+
+  StatusLineNC = {
+    fg = colors.gray,
+    bg = colors.bg,
+  },
+
+
+  Search = {
+    fg = colors.bg,
+    bg = colors.type,
+  },
+
+
+  Visual = {
+    bg = "#252525",
+  },
+
+
+  Pmenu = {
+    fg = colors.fg,
+    bg = colors.bg2,
+  },
+
+
+  PmenuSel = {
+    fg = colors.bg,
+    bg = colors.function_name,
+  },
+
+
+  DiagnosticError = {
+    fg = colors.red,
+  },
+
+
+  DiagnosticWarn = {
+    fg = colors.type,
   },
 }
 
+
 local treesitter = {
-  ["@function"] = {
-    fg = colorPalette.function_name,
-  },
 
   ["@keyword"] = {
-    fg = colorPalette.keyword,
+    fg = colors.keyword,
+  },
+
+  ["@keyword.conditional"] = {
+    fg = colors.keyword,
+  },
+
+  ["@keyword.repeat"] = {
+    fg = colors.keyword,
+  },
+
+  ["@keyword.function"] = {
+    fg = colors.keyword,
+  },
+
+  ["@function"] = {
+    fg = colors.function_name,
+  },
+
+  ["@function.call"] = {
+    fg = colors.function_name,
   },
 
   ["@string"] = {
-    fg = colorPalette.string,
+    fg = colors.string,
   },
 
-  ["@variable"] = {
-    fg = colorPalette.fg,
+  ["@number"] = {
+    fg = colors.number,
+  },
+
+  ["@boolean"] = {
+    fg = colors.number,
   },
 
   ["@type"] = {
-    fg = colorPalette.type,
+    fg = colors.type,
   },
 
   ["@comment"] = {
-    fg = colorPalette.comment,
+    fg = colors.gray,
     italic = true,
   },
-}
 
-local diagnostics = {
-  DiagnosticError = {
-    fg = colorPalette.error,
-  },
-
-  DiagnosticWarn = {
-    fg = colorPalette.warning,
-  },
-
-  DiagnosticInfo = {
-    fg = colorPalette.function_name,
-  },
-
-  DiagnosticHint = {
-    fg = colorPalette.string,
-  },
-
-  DiagnosticUnderlineError = {
-    underline = true,
-    sp = colorPalette.error,
-  },
-
-  DiagnosticUnderlineWarn = {
-    underline = true,
-    sp = colorPalette.warning,
+  ["@variable"] = {
+    fg = colors.fg,
   },
 }
+
 
 for group, opts in pairs(highlights) do
   vim.api.nvim_set_hl(0, group, opts)
 end
 
+
 for group, opts in pairs(treesitter) do
   vim.api.nvim_set_hl(0, group, opts)
 end
 
-for group, opts in pairs(diagnostics) do
-  vim.api.nvim_set_hl(0, group, opts)
-end
 
-vim.opt.pumblend = 10
+vim.opt.pumblend = 5
