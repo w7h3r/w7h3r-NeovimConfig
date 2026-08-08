@@ -28,6 +28,7 @@ vim.filetype.add({
 	},
 })
 
+vim.cmd.colorscheme("betterSimple")
 require("config.lazy")
 require("settings.general")
 
