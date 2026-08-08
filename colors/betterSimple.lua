@@ -7,9 +7,9 @@ end
 vim.g.colors_name = "betterSimple"
 
 local colorPalette = {
-  bg = "#1e222a",
-  bg2 = "#3b4252",
-  bg3 = "#2a303c",
+  bg = "#000000",
+  bg2 = "#000000",
+  bg3 = "#000000",
 
   fg = "#d8dee9",
   fg_dark = "#eceff4",
@@ -23,7 +23,7 @@ local colorPalette = {
   line = "#4c566a",
 
   error = "#af214a",
-  warning = "#f1c211",
+  warning = "#99632A",
 }
 
 local highlights = {
@@ -62,8 +62,8 @@ local highlights = {
   },
 
   StatusLine = {
-    fg = colorPalette.fg_dark,
-    bg = colorPalette.bg2,
+    fg = "#000000",
+    bg = "#000000",
   },
 
   NormalFloat = {

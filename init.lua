@@ -28,6 +28,19 @@ vim.filetype.add({
 	},
 })
 
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", {
+  desc = "Toggle file tree"
+})
+
+vim.keymap.set("n", "<leader>m", "K", {
+  desc = "Open man page"
+})
+
+vim.keymap.set("n", "K", "<nop>")
+vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, {
+  desc = "LSP Hover"
+})
+
 vim.cmd.colorscheme("betterSimple")
 require("config.lazy")
 require("settings.general")
